@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório Prefeitura de Americana — Reconhecimento CPM | Abr–Mai 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Geo conjunto (4º tipo) ── */
+    .conjunto-card.geo::after { background: linear-gradient(90deg, #4A6AFF, #6A8AFF); }
+    .geo .conjunto-tag  { background: rgba(74,106,255,0.08); color: #4A6AFF; border: 1px solid rgba(74,106,255,0.18); }
+    .geo .cb-fill       { background: #4A6AFF; }
+
+    /* Reduz frame das imagens para encaixar 7 criativos */
+    .ad-frame { height: 260px; }
+
+    /* Status de meta superada */
+    .mm-status-success {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 700; color: #00994D;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    /* Badge rank extra */
+    .rank-4 { background: rgba(74,106,255,0.07); color: #4A6AFF; }
+    .rank-5 { background: rgba(230,81,0,0.07); color: #E65100; }
+    .rank-6 { background: rgba(91,44,111,0.07); color: #7B2FBE; }
+    .rank-7 { background: rgba(0,153,77,0.07); color: #00994D; }
+
+    /* ── Instagram section ── */
+    .ig-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--md);
+      margin-top: var(--xl);
+    }
+    .ig-kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .ig-kpi-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .ig-kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #E1306C, #F77737, #FCAF45);
+    }
+    .ig-kpi-val {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-top: 4px;
+    }
+    .ig-kpi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #00994D;
+      background: rgba(0,153,77,0.08);
+      padding: 3px 9px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+    .ig-kpi-lbl {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .ig-celebra-box {
+      background: linear-gradient(135deg, rgba(225,48,108,0.06) 0%, rgba(247,119,55,0.06) 100%);
+      border: 1px solid rgba(225,48,108,0.15);
+      border-left: 3px solid #E1306C;
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: var(--lg) var(--xl);
+      margin-top: var(--lg);
+    }
+    .ig-celebra-box .insight-label { color: #E1306C; }
+    @media (max-width: 768px) {
+      .ig-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .ig-kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Glossário ── */
+    .gloss-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      margin-top: var(--xl);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      overflow: hidden;
+    }
+    .gloss-item {
+      display: flex;
+      gap: var(--md);
+      padding: var(--md) var(--lg);
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .gloss-item:nth-child(odd)       { border-right: 1px solid var(--border); }
+    .gloss-item:nth-last-child(-n+2) { border-bottom: none; }
+    .gloss-term {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--blue);
+      white-space: nowrap;
+      min-width: 108px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .gloss-def {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    @media (max-width: 640px) {
+      .gloss-grid { grid-template-columns: 1fr; }
+      .gloss-item:nth-child(odd)       { border-right: none; }
+      .gloss-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .gloss-item:last-child           { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <img src="assets/logo-esquina.png" alt="Esquina" />
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#meta">Meta</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+    <li><a href="#conjuntos">Conjuntos</a></li>
+    <li><a href="#anuncios">Criativos</a></li>
+    <li><a href="#demografia">Público</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#glossario">Glossário</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-export" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+      Exportar PDF
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero" style="min-height:72vh;">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/video_header.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-logo fade-in" style="display:flex;justify-content:center;margin-bottom:var(--lg)">
+      <img src="assets/LOGO_AMERICANA.png" alt="Prefeitura de Americana" style="height:clamp(88px,12vw,130px);width:auto;display:block;mix-blend-mode:screen;filter:brightness(1.15) saturate(1.1);" />
+    </div>
+
+    <div class="hero-badge fade-in">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+      RELATÓRIO CONSOLIDADO &middot; ABRIL &middot; PMA
+    </div>
+
+    <h1 class="hero-title fade-in" style="font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.15;">
+      Campanha <span class="accent-light">Always On</span><br/>
+      Prefeitura de Americana / SP
+    </h1>
+
+    <p class="hero-subtitle fade-in">
+      Em 30 dias, as ações da Prefeitura de Americana chegaram à tela de 177 mil pessoas — e a campanha superou a meta de impressões contratada.
+    </p>
+
+    <div class="hero-meta fade-in">
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">
+          <span class="count-up" data-target="1091995" data-format="compact">0</span>
+        </span>
+        <span class="hero-meta-label">Impressões</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">
+          <span class="count-up" data-target="176842" data-format="compact">0</span>
+        </span>
+        <span class="hero-meta-label">Contas Alcançadas</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">
+          <span class="count-up" data-target="1084" data-format="standard">0</span>
+        </span>
+        <span class="hero-meta-label">Cliques</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">
+          <span class="count-up" data-target="51484" data-format="standard">0</span>
+        </span>
+        <span class="hero-meta-label">Engajamentos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== META DA CAMPANHA ===== -->
+<div class="meta-section-wrapper" id="meta">
+  <div class="meta-section section">
+
+    <span class="section-label teal">Meta da Campanha</span>
+    <h2 class="section-title fade-in">Progresso de Impressões</h2>
+    <p class="section-subtitle fade-in">A meta de 1 milhão de impressões foi superada. Durante todo o período de veiculação, os moradores de Americana foram impactados pela comunicação da Prefeitura.</p>
+
+    <div class="mm-wrap fade-in">
+      <div class="mm-stats">
+        <div class="mm-stat-side">
+          <span class="mm-side-val">1.091.995</span>
+          <span class="mm-side-key">Impressões entregues</span>
+        </div>
+
+        <div class="mm-center">
+          <span class="mm-pct">
+            <span class="count-up" data-target="109.2" data-decimals="1" data-format="standard">0</span><span class="mm-pct-sym">%</span>
+          </span>
+          <span class="mm-pct-label">da meta concluída</span>
+          <span class="mm-status-success">&#10003;&nbsp;Meta Superada!</span>
+        </div>
+
+        <div class="mm-stat-side end">
+          <span class="mm-side-val muted">1.000.000</span>
+          <span class="mm-side-key">Meta total de impressões</span>
+        </div>
+      </div>
+
+      <div class="mm-track-wrap">
+        <div class="mm-track">
+          <div class="mm-fill" style="width:0%"></div>
+          <div class="mm-dot" style="left:0%"></div>
+        </div>
+        <div class="mm-track-labels">
+          <span>28 Abr · Início</span>
+          <span class="mm-remain" style="color:#00994D;font-weight:700;">+91.995 além da meta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta-insight fade-in">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#17A697;flex-shrink:0">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span>Com <strong>109,2% da meta já entregue</strong>, a Prefeitura de Americana superou o objetivo de 1 milhão de impressões com 91.995 entregas a mais do que o contratado — comprovando a eficiência do planejamento de mídia.</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== KPIs PRINCIPAIS ===== -->
+<section class="section" id="kpis">
+  <span class="section-label">Métricas Consolidadas</span>
+  <h2 class="section-title fade-in">KPIs Principais</h2>
+  <p class="section-subtitle fade-in">Visão geral da performance da campanha <em>Prefeitura de Americana</em> no período de 28/04 a 27/05/2026.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card teal fade-in">
+      <div class="kpi-label">Impressões</div>
+      <div class="kpi-value">
+        <span class="count-up" data-target="1091995" data-format="compact">0</span>
+      </div>
+      <div class="kpi-sub">Total de veiculações entregues</div>
+    </div>
+
+    <div class="kpi-card purple fade-in">
+      <div class="kpi-label">Alcance</div>
+      <div class="kpi-value">
+        <span class="count-up" data-target="176842" data-format="compact">0</span>
+      </div>
+      <div class="kpi-sub">Contas únicas alcançadas</div>
+    </div>
+
+    <div class="kpi-card fade-in">
+      <div class="kpi-label">Frequência</div>
+      <div class="kpi-value">6,17×</div>
+      <div class="kpi-sub">Média de exposições por pessoa</div>
+    </div>
+
+    <div class="kpi-card fade-in">
+      <div class="kpi-label">Cliques no Link</div>
+      <div class="kpi-value">
+        <span class="count-up" data-target="1084" data-format="standard">0</span>
+      </div>
+      <div class="kpi-sub">CTR médio: <strong>0,10%</strong></div>
+    </div>
+
+    <div class="kpi-card teal fade-in">
+      <div class="kpi-label">Visitas ao Perfil IG</div>
+      <div class="kpi-value">
+        <span class="count-up" data-target="3151" data-format="standard">0</span>
+      </div>
+      <div class="kpi-sub">Novos visitantes no Instagram da Prefeitura</div>
+    </div>
+
+    <div class="kpi-card purple fade-in">
+      <div class="kpi-label">Engajamentos</div>
+      <div class="kpi-value">
+        <span class="count-up" data-target="51484" data-format="standard">0</span>
+      </div>
+      <div class="kpi-sub">Interações com os posts</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTADOS INSTAGRAM ===== -->
+<!-- ===== CONJUNTOS DE ANÚNCIOS ===== -->
+<section class="section" id="conjuntos">
+  <span class="section-label purple">Distribuição por Conjunto</span>
+  <h2 class="section-title fade-in">Conjuntos de Anúncios</h2>
+  <p class="section-subtitle fade-in">A campanha foi veiculada em quatro conjuntos simultâneos: Público Amplo por cluster, Remarketing de quem já interagiu, Cluster Religioso e segmentação Geolocalizada no bairro Zanaga.</p>
+
+  <!-- Grid 2×2 para 4 conjuntos -->
+  <div class="conjunto-grid fade-in">
+
+    <!-- CONJUNTO 1 — AMPLO -->
+    <div class="conjunto-card primaria">
+      <div class="conjunto-tag">Público Amplo</div>
+      <div class="conjunto-title">Amplo — Cluster 18+</div>
+      <div class="conjunto-desc">Segmentação por clusters de interesse para moradores de Americana com 18 anos ou mais. Maior volume de alcance da campanha.</div>
+      <div class="conjunto-metrics">
+        <div class="cm-item">
+          <span class="cm-val">491.607</span>
+          <span class="cm-key">Impressões</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">131.166</span>
+          <span class="cm-key">Contas alcançadas</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">417</span>
+          <span class="cm-key">Cliques</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">26.554</span>
+          <span class="cm-key">Engajamentos</span>
+        </div>
+      </div>
+      <div class="conjunto-bar">
+        <div class="cb-label">Participação no total de impressões</div>
+        <div class="cb-track">
+          <div class="cb-fill" data-width="45.0%" style="width:0%"></div>
+        </div>
+        <div class="cb-pct">45,0%</div>
+      </div>
+    </div>
+
+    <!-- CONJUNTO 2 — REMARKETING -->
+    <div class="conjunto-card remarketing">
+      <div class="conjunto-tag">Remarketing</div>
+      <div class="conjunto-title">Remarketing — Reengajamento</div>
+      <div class="conjunto-desc">Público que já interagiu com a conta ou viu os criativos anteriormente. Alta frequência (6,82×) garante memorização profunda da mensagem.</div>
+      <div class="conjunto-metrics">
+        <div class="cm-item">
+          <span class="cm-val">334.723</span>
+          <span class="cm-key">Impressões</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">49.102</span>
+          <span class="cm-key">Contas alcançadas</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">335</span>
+          <span class="cm-key">Cliques</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">13.012</span>
+          <span class="cm-key">Engajamentos</span>
+        </div>
+      </div>
+      <div class="conjunto-bar">
+        <div class="cb-label">Participação no total de impressões</div>
+        <div class="cb-track">
+          <div class="cb-fill" data-width="30.6%" style="width:0%"></div>
+        </div>
+        <div class="cb-pct">30,6%</div>
+      </div>
+    </div>
+
+    <!-- CONJUNTO 3 — CLUSTER RELIGIOSO -->
+    <div class="conjunto-card secundaria">
+      <div class="conjunto-tag">Cluster Religioso</div>
+      <div class="conjunto-title">Religiosos — Cluster 18+</div>
+      <div class="conjunto-desc">Segmentação por afinidade religiosa para alcançar comunidades específicas em Americana com criativos direcionados ao contexto cultural local.</div>
+      <div class="conjunto-metrics">
+        <div class="cm-item">
+          <span class="cm-val">175.362</span>
+          <span class="cm-key">Impressões</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">51.767</span>
+          <span class="cm-key">Contas alcançadas</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">179</span>
+          <span class="cm-key">Cliques</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">453</span>
+          <span class="cm-key">Engajamentos</span>
+        </div>
+      </div>
+      <div class="conjunto-bar">
+        <div class="cb-label">Participação no total de impressões</div>
+        <div class="cb-track">
+          <div class="cb-fill" data-width="16.1%" style="width:0%"></div>
+        </div>
+        <div class="cb-pct">16,1%</div>
+      </div>
+    </div>
+
+    <!-- CONJUNTO 4 — ZANAGA GEO -->
+    <div class="conjunto-card geo">
+      <div class="conjunto-tag">Geolocalizado</div>
+      <div class="conjunto-title">Zanaga — Geo 18+</div>
+      <div class="conjunto-desc">Segmentação hiperlocal para moradores do bairro Zanaga em Americana. Menor volume, porém maior CTR de toda a campanha (0,17%).</div>
+      <div class="conjunto-metrics">
+        <div class="cm-item">
+          <span class="cm-val">90.303</span>
+          <span class="cm-key">Impressões</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">18.790</span>
+          <span class="cm-key">Contas alcançadas</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">153</span>
+          <span class="cm-key">Cliques</span>
+        </div>
+        <div class="cm-item">
+          <span class="cm-val">11.465</span>
+          <span class="cm-key">Engajamentos</span>
+        </div>
+      </div>
+      <div class="conjunto-bar">
+        <div class="cb-label">Participação no total de impressões</div>
+        <div class="cb-track">
+          <div class="cb-fill" data-width="8.3%" style="width:0%"></div>
+        </div>
+        <div class="cb-pct">8,3%</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="chart-section fade-in">
+    <div class="chart-container">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Distribuição de Impressões por Conjunto</div>
+          <div class="chart-description">Público Amplo e Remarketing juntos representam 75,6% do total — maior concentração de investimento em cobertura e reforço de mensagem.</div>
+        </div>
+      </div>
+      <div class="chart-wrapper" style="height:280px">
+        <canvas id="chartConjuntos"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ANÚNCIOS / CRIATIVOS ===== -->
+<section class="section" id="anuncios">
+  <span class="section-label teal">Criativos</span>
+  <h2 class="section-title fade-in">Anúncios da Campanha</h2>
+  <p class="section-subtitle fade-in">Sete criativos foram veiculados ao longo do período em conjuntos distintos. Os resultados abaixo consolidam a performance de cada anúncio independentemente do conjunto em que foi exibido.</p>
+
+  <div class="ad-grid">
+
+    <!-- CRIATIVO 1 — ASFALTO VAI VIRAR TAPETE -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/asfaltotapete.jpg" alt="Asfalto Vai Virar Tapete" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-1">&#9733; Maior alcance</div>
+          <div class="ad-format-tag">Vídeo · Feed &amp; Stories</div>
+        </div>
+        <div class="ad-name">ASFALTO VAI VIRAR TAPETE</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">271.881</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">262</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,096%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">567</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">16.804</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">24,9%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 2 — NOVA ESTAÇÃO DE TRATAMENTO DE ÁGUA -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/tratamentoagua.jpg" alt="Nova Estação de Tratamento de Água" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-2">&#9733; Maior visitas IG</div>
+          <div class="ad-format-tag">Vídeo · Feed &amp; Stories</div>
+        </div>
+        <div class="ad-name">NOVA ESTAÇÃO DE TRATAMENTO DE ÁGUA</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">248.953</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">244</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,098%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">1.166</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">13.534</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">22,8%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 3 — ORÇAMENTO 2027 -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/orcamento2027.jpg" alt="Orçamento 2027" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-3">3º em impressões</div>
+          <div class="ad-format-tag">Imagem · Feed</div>
+        </div>
+        <div class="ad-name">ORÇAMENTO 2027</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">156.182</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">123</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,079%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">477</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">161</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">14,3%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 4 — 32 NOVOS AGENTES -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/novosagentes.jpg" alt="32 Novos Agentes" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-4">4º em impressões</div>
+          <div class="ad-format-tag">Vídeo · Feed &amp; Stories</div>
+        </div>
+        <div class="ad-name">32 NOVOS AGENTES | GMA</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">149.314</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">123</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,082%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">332</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">9.067</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">13,7%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 5 — CELEBRA AMERICANA II -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/celebra2.jpg" alt="Celebra Americana II" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-5">Cluster Religioso</div>
+          <div class="ad-format-tag">Imagem · Feed</div>
+        </div>
+        <div class="ad-name">CELEBRA AMERICANA II</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">103.539</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">94</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,091%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">209</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">225</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">9,5%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 6 — PA DO ZANAGA -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/zanaga.jpg" alt="PA do Zanaga" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-2">&#9733; Maior CTR</div>
+          <div class="ad-format-tag">Vídeo · Geolocalizado</div>
+        </div>
+        <div class="ad-name">PA DO ZANAGA</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">90.303</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">153</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,169%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">234</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">11.465</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">8,3%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRIATIVO 7 — CELEBRA AMERICANA -->
+    <div class="ad-card fade-in">
+      <div class="ad-frame">
+        <img src="assets/celebra1.jpg" alt="Celebra Americana" />
+      </div>
+      <div class="ad-body">
+        <div class="ad-header-row">
+          <div class="ad-rank-badge rank-6">Cluster Religioso</div>
+          <div class="ad-format-tag">Imagem · Feed</div>
+        </div>
+        <div class="ad-name">CELEBRA AMERICANA</div>
+        <div class="ad-metrics">
+          <div class="am-item am-highlight">
+            <span class="am-val">71.823</span>
+            <span class="am-key">Impressões</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">85</span>
+            <span class="am-key">Cliques</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">0,118%</span>
+            <span class="am-key">CTR</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">166</span>
+            <span class="am-key">Visitas IG</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">228</span>
+            <span class="am-key">Engajamentos</span>
+          </div>
+          <div class="am-item">
+            <span class="am-val">6,6%</span>
+            <span class="am-key">Do total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="chart-section fade-in">
+    <div class="chart-container">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Impressões por Criativo</div>
+          <div class="chart-description">ASFALTO VAI VIRAR TAPETE e NOVA ESTAÇÃO DE TRATAMENTO DE ÁGUA concentraram 47,7% das impressões totais da campanha.</div>
+        </div>
+      </div>
+      <div class="chart-wrapper" style="height:360px">
+        <canvas id="chartAnuncios"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box teal fade-in">
+    <div class="insight-label">Destaque — PA DO ZANAGA</div>
+    <div class="insight-text">O criativo geolocalizado registrou o <strong>maior CTR da campanha (0,169%)</strong> — 71% acima da média geral de 0,10%. Com apenas 90 mil impressões, gerou 11.465 engajamentos, provando que mensagens direcionadas a um bairro específico criam conexão muito mais forte com o morador.</div>
+  </div>
+
+</section>
+
+<!-- ===== DEMOGRAFIA ===== -->
+<section class="section" id="demografia">
+  <span class="section-label purple">Perfil do Público</span>
+  <h2 class="section-title fade-in">Análise Demográfica</h2>
+  <p class="section-subtitle fade-in">Quem foram as pessoas impactadas pela campanha — distribuição por faixa etária e gênero.</p>
+
+  <div class="demo-grid">
+    <div class="chart-container fade-in">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Impressões por Faixa Etária</div>
+          <div class="chart-description">Distribuição das impressões entre os grupos de idade.</div>
+        </div>
+      </div>
+      <div class="chart-wrapper" style="height:280px">
+        <canvas id="chartIdade"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-container fade-in">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Distribuição por Gênero</div>
+          <div class="chart-description">Participação feminina e masculina no total de impressões.</div>
+        </div>
+      </div>
+      <div class="chart-wrapper" style="height:280px">
+        <canvas id="chartGenero"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2 fade-in" style="margin-top: var(--lg)">
+    <div class="insight-box teal">
+      <div class="insight-label">Concentração no público ativo</div>
+      <div class="insight-text">A faixa <strong>25–34 anos recebeu 46,5% das impressões</strong>, mostrando forte penetração entre o público mais engajado politicamente e nas redes sociais. Somada à faixa 35–44 (20,6%), mais de 67% das entregas atingiram o núcleo decisor da cidade.</div>
+    </div>
+    <div class="insight-box" style="border-left-color: var(--px-purple); background: rgba(91,44,111,0.05)">
+      <div class="insight-label" style="color: var(--px-purple)">Predominância Feminina</div>
+      <div class="insight-text">O público <strong>feminino recebeu 55,4%</strong> das impressões totais. Esse perfil reflete a maior presença e engajamento das mulheres nas redes sociais locais — grupo estratégico para comunicação de serviços públicos e bem-estar comunitário.</div>
+    </div>
+  </div>
+
+  <div class="chart-container fade-in" style="margin-top: var(--lg)">
+    <div class="chart-title" style="margin-bottom: var(--md)">Detalhamento por Faixa Etária</div>
+    <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+      <table style="width:100%; min-width:380px; border-collapse: collapse; font-size: 0.88rem">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding: 10px 12px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#888; border-bottom: 1px solid #E0E0E0">Faixa Etária</th>
+            <th style="text-align:right; padding: 10px 12px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#888; border-bottom: 1px solid #E0E0E0">Impressões</th>
+            <th style="text-align:right; padding: 10px 12px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#888; border-bottom: 1px solid #E0E0E0">Alcance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px 12px; font-weight:600; color:#333; border-bottom:1px solid #F0F0F0">18–24</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">146.612</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">19.911</td>
+          </tr>
+          <tr style="background:#F8F9FF">
+            <td style="padding: 10px 12px; font-weight:600; color:#333; border-bottom:1px solid #F0F0F0">25–34</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">507.938</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">87.647</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; font-weight:600; color:#333; border-bottom:1px solid #F0F0F0">35–44</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">224.722</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">36.416</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; font-weight:600; color:#333; border-bottom:1px solid #F0F0F0">45–54</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">115.913</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">18.836</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; font-weight:600; color:#333; border-bottom:1px solid #F0F0F0">55–64</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">61.869</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444; border-bottom:1px solid #F0F0F0">9.762</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 12px; font-weight:600; color:#333">65+</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444">34.921</td>
+            <td style="padding: 10px 12px; text-align:right; color:#444">5.808</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== INSTAGRAM ===== -->
+<section class="section" id="instagram">
+  <span class="section-label" style="color:#E1306C;border-color:rgba(225,48,108,0.2);background:rgba(225,48,108,0.06)">Instagram</span>
+  <h2 class="section-title fade-in">Resultados no Instagram</h2>
+  <p class="section-subtitle fade-in">Orgânico + Pago &middot; 28 de abril a 27 de maio de 2026. Os números abaixo consolidam toda a atividade do perfil no período — mídia paga e crescimento orgânico juntos.</p>
+
+  <!-- 6 métricas em grid -->
+  <div class="ig-kpi-grid fade-in">
+
+    <div class="ig-kpi-card">
+      <div class="ig-kpi-lbl">Visualizações</div>
+      <div class="ig-kpi-val">3,0 mi</div>
+      <div class="ig-kpi-badge">&#9650; +21,3%</div>
+    </div>
+
+    <div class="ig-kpi-card">
+      <div class="ig-kpi-lbl">Alcance</div>
+      <div class="ig-kpi-val">344,9 mil</div>
+      <div class="ig-kpi-badge">&#9650; +11,1%</div>
+    </div>
+
+    <div class="ig-kpi-card">
+      <div class="ig-kpi-lbl">Interações com o Conteúdo</div>
+      <div class="ig-kpi-val">60,8 mil</div>
+      <div class="ig-kpi-badge">&#9650; +105,4%</div>
+    </div>
+
+    <div class="ig-kpi-card">
+      <div class="ig-kpi-lbl">Cliques no Link</div>
+      <div class="ig-kpi-val">1,8 mil</div>
+      <div class="ig-kpi-badge">&#9650; +30,6%</div>
+    </div>
+
+    <div class="ig-kpi-card">
+      <div class="ig-kpi-lbl">Visitas ao Perfil</div>
+      <div class="ig-kpi-val">16,8 mil</div>
+      <div class="ig-kpi-badge">&#9650; +51,7%</div>
+    </div>
+
+    <div class="ig-kpi-card" style="border-color:rgba(225,48,108,0.2);">
+      <div class="ig-kpi-lbl">Novos Seguidores</div>
+      <div class="ig-kpi-val" style="color:#E1306C">2,1 mil</div>
+      <div class="ig-kpi-badge">&#9650; +81,5%</div>
+    </div>
+
+  </div>
+
+  <!-- Gráfico de seguidores por dia -->
+  <div class="chart-section fade-in">
+    <div class="chart-container">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Novos Seguidores por Dia</div>
+          <div class="chart-description">Crescimento diário de seguidores orgânicos no Instagram ao longo do período da campanha.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;color:#E1306C;background:rgba(225,48,108,0.08);padding:4px 12px;border-radius:100px;">
+            &#9679; 23 Mai — Pico Celebra
+          </span>
+        </div>
+      </div>
+      <div class="chart-wrapper" style="height:260px">
+        <canvas id="chartSeguidores"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insight Celebra -->
+  <div class="ig-celebra-box fade-in">
+    <div class="insight-label">23 de maio — O dia em que tudo convergiu</div>
+    <div class="insight-text" style="margin-top:8px">
+      O dia 23 foi um dos pontos altos do período: registramos um <strong>pico expressivo de novos seguidores</strong>, impulsionado pelo evento Celebra. A movimentação cultural levou muitas pessoas ao perfil de forma orgânica, fruto também do trabalho conjunto de engajar e levar público ao evento.<br/><br/>
+      E não foi só isso — esse mesmo dia coincidiu com um dos maiores alcances da campanha, o que mostra como os dois fatores se complementaram: enquanto a mídia expandia o alcance, o Celebra gerava <strong>conexão real e crescimento orgânico</strong>.
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== DIAGNÓSTICO ===== -->
+<div class="diag-section-wrapper" id="diagnostico">
+  <video class="diag-video-bg" autoplay muted loop playsinline>
+    <source src="assets/video_header.mp4" type="video/mp4" />
+  </video>
+  <div class="diag-video-overlay"></div>
+
+  <div class="diag-inner">
+    <span class="section-label diag-label">Diagnóstico</span>
+    <h2 class="section-title diag-section-title fade-in">Análise da Campanha</h2>
+    <p class="section-subtitle diag-subtitle fade-in">Uma leitura dos principais resultados da campanha de Reconhecimento da Prefeitura de Americana — o que os dados revelam sobre cobertura, memorização e engajamento dos moradores.</p>
+
+    <div class="diag-cards fade-in">
+
+      <!-- CARD 01 — Meta Superada -->
+      <div class="diag-card-new">
+        <div class="dcn-accent teal"></div>
+        <div class="dcn-num">01</div>
+        <div class="dcn-metric">109,2%</div>
+        <div class="dcn-title">Meta Superada</div>
+        <div class="dcn-text">A Prefeitura entregou <strong>1.091.995 impressões</strong>, superando a meta de 1 milhão em 9,2% — ou seja, 91.995 veiculações extras sem custo adicional. O investimento foi aproveitado ao máximo durante todo o período.</div>
+      </div>
+
+      <!-- CARD 02 — Cobertura Municipal -->
+      <div class="diag-card-new">
+        <div class="dcn-accent blue"></div>
+        <div class="dcn-num">02</div>
+        <div class="dcn-metric">176.842</div>
+        <div class="dcn-title">Contas Alcançadas</div>
+        <div class="dcn-text">Mais de 176 mil moradores únicos de Americana foram impactados pela campanha. Considerando a população do município de ~240 mil, a penetração digital da campanha foi expressiva.</div>
+      </div>
+
+      <!-- CARD 03 — Frequência -->
+      <div class="diag-card-new">
+        <div class="dcn-accent purple"></div>
+        <div class="dcn-num">03</div>
+        <div class="dcn-metric">6,17×</div>
+        <div class="dcn-title">Frequência de Marca</div>
+        <div class="dcn-text">Cada pessoa alcançada viu os anúncios em média <strong>6,17 vezes</strong>. O conjunto de Remarketing impulsionou essa métrica ao reforçar a mensagem para quem já havia interagido — frequência ideal para fixação de marca.</div>
+      </div>
+
+      <!-- CARD 04 — Engajamentos -->
+      <div class="diag-card-new">
+        <div class="dcn-accent teal"></div>
+        <div class="dcn-num">04</div>
+        <div class="dcn-metric">51.484</div>
+        <div class="dcn-title">Engajamentos com Conteúdo</div>
+        <div class="dcn-text">Os criativos geraram mais de 51 mil interações. O vídeo <strong>ASFALTO VAI VIRAR TAPETE</strong> liderou com 16.804 engajamentos isolados — um terço do total, confirmando a força de conteúdo sobre obras visíveis à população.</div>
+      </div>
+
+      <!-- CARD 05 — Perfil de Gênero -->
+      <div class="diag-card-new">
+        <div class="dcn-accent blue"></div>
+        <div class="dcn-num">05</div>
+        <div class="dcn-metric">55,4%</div>
+        <div class="dcn-title">Público Feminino Predominante</div>
+        <div class="dcn-text">As mulheres foram responsáveis por 55,4% das impressões. Esse perfil, concentrado na faixa <strong>25–34 anos</strong>, alinha-se ao público mais ativo nas redes sociais e com maior propensão a compartilhar conteúdo de utilidade pública.</div>
+      </div>
+
+      <!-- CARD 06 — CTR Geolocalizado -->
+      <div class="diag-card-new">
+        <div class="dcn-accent purple"></div>
+        <div class="dcn-num">06</div>
+        <div class="dcn-metric">0,169%</div>
+        <div class="dcn-title">Geolocalização como Diferencial</div>
+        <div class="dcn-text">O criativo <strong>PA DO ZANAGA</strong> registrou CTR 71% acima da média da campanha. A segmentação hiperlocal por bairro prova que mensagens próximas da realidade do morador geram muito mais engajamento — estratégia a ampliar nos próximos ciclos.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== GLOSSÁRIO ===== -->
+<section class="section" id="glossario">
+  <span class="section-label">Referência</span>
+  <h2 class="section-title fade-in">Glossário</h2>
+  <p class="section-subtitle fade-in">Definições dos principais indicadores utilizados neste relatório.</p>
+
+  <div class="gloss-grid fade-in">
+
+    <div class="gloss-item">
+      <span class="gloss-term">CPM</span>
+      <span class="gloss-def">Custo por Mil Impressões — modelo de compra onde o anunciante paga a cada 1.000 exibições do anúncio.</span>
+    </div>
+    <div class="gloss-item">
+      <span class="gloss-term">Impressão</span>
+      <span class="gloss-def">Cada vez que um anúncio é exibido na tela de um usuário, independentemente de clique.</span>
+    </div>
+
+    <div class="gloss-item">
+      <span class="gloss-term">Alcance</span>
+      <span class="gloss-def">Número de pessoas únicas que viram o anúncio ao menos uma vez no período analisado.</span>
+    </div>
+    <div class="gloss-item">
+      <span class="gloss-term">Frequência</span>
+      <span class="gloss-def">Média de vezes que cada pessoa foi impactada — calculada como Impressões ÷ Alcance.</span>
+    </div>
+
+    <div class="gloss-item">
+      <span class="gloss-term">CTR</span>
+      <span class="gloss-def">Taxa de cliques no link: percentual de impressões que resultaram em clique direto no anúncio.</span>
+    </div>
+    <div class="gloss-item">
+      <span class="gloss-term">Engajamento</span>
+      <span class="gloss-def">Soma de reações, comentários, compartilhamentos e salvamentos gerados por uma publicação.</span>
+    </div>
+
+    <div class="gloss-item">
+      <span class="gloss-term">Conjunto</span>
+      <span class="gloss-def">Agrupamento de criativos com mesmo público-alvo, posicionamento e orçamento dentro de uma campanha.</span>
+    </div>
+    <div class="gloss-item">
+      <span class="gloss-term">Criativo</span>
+      <span class="gloss-def">Peça visual (imagem ou vídeo) veiculada no anúncio — o que o público efetivamente vê.</span>
+    </div>
+
+    <div class="gloss-item">
+      <span class="gloss-term">Remarketing</span>
+      <span class="gloss-def">Estratégia de reimpactar usuários que já interagiram com a página ou conteúdo anteriormente.</span>
+    </div>
+    <div class="gloss-item">
+      <span class="gloss-term">Always On</span>
+      <span class="gloss-def">Campanha contínua, sem data de término definida — mantém presença constante da marca no feed.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="assets/logo-esquina.png" alt="Esquina" />
+  </div>
+  <p class="footer-text">
+    Relatório gerado por Esquina &middot; Agência de Performance &middot; Período 28/04–27/05/2026<br/>
+    Dados extraídos do Meta Ads Manager &middot; Campanha [Prefeitura de Americana] | Reconhecimento | CPM
+  </p>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/charts.js"></script>
+
+<script>
+  // Nav mobile toggle
+  document.getElementById('navToggle').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // Borda do nav no scroll
+  window.addEventListener('scroll', function() {
+    const nav = document.getElementById('nav');
+    nav.style.borderBottomColor = window.scrollY > 60
+      ? 'rgba(0,0,0,0.12)'
+      : 'rgba(0,0,0,0.08)';
+  });
+
+  // ===== ANIMAÇÃO DAS BARRAS =====
+  const barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.classList.contains('mm-fill')) {
+        setTimeout(function() {
+          el.style.width = '100%'; // meta superada — barra cheia
+          var dot = el.closest('.mm-track').querySelector('.mm-dot');
+          if (dot) dot.style.left = '99%';
+        }, 200);
+      }
+      if (el.classList.contains('cb-fill')) {
+        const w = el.dataset.width || '0%';
+        setTimeout(function() { el.style.width = w; }, 200);
+      }
+      barObserver.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.mm-fill, .cb-fill').forEach(function(el) {
+    barObserver.observe(el);
+  });
+</script>
+
+
+</body>
+</html>
